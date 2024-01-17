@@ -1,6 +1,6 @@
 import { paste } from '@testing-library/user-event/dist/paste';
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -31,16 +31,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     if (!userAuth) return;
     const userDocRef = doc(db, 'users', userAuth.uid);
 
-    console.log(userDocRef);
-
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot);
-    console.log(userSnapshot.exists());
 
-    // if user data exists
-
-
-    // if user data does not exist
     if (!userSnapshot.exists()) {
         const { displayName, email } = userAuth;
         const createdAt = new Date();
@@ -71,3 +63,5 @@ export const signInWithUserWithEmailAndPassword = async (email, password) => {
 
     return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUser = async () => await signOut(auth);
