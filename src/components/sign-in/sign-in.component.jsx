@@ -4,7 +4,7 @@ import { auth,
     createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import { useEffect } from "react";
 import { getRedirectResult } from "firebase/auth";
-import SignUpForm from "../sign-up/sign-up.component";
+import SignUpForm from "../sign-up/sign-up-form.component";
 
 const SignIn = () => { 
 
