@@ -1,6 +1,6 @@
 import { paste } from '@testing-library/user-event/dist/paste';
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -10,15 +10,15 @@ const firebaseConfig = {
     storageBucket: "crwn-clothing-db-ac9fd.appspot.com",
     messagingSenderId: "854333886956",
     appId: "1:854333886956:web:764dfac700d849f2dfb0c9"
-  };
-  
-  
+};
+
+
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-    prompt: 'select_account'   
+    prompt: 'select_account'
 });
 
 export const auth = getAuth();
@@ -64,4 +64,10 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
 
     return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInWithUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+
+    return await signInWithEmailAndPassword(auth, email, password);
 };
