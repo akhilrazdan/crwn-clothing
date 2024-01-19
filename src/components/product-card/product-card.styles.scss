@@ -16,9 +16,13 @@
   button {
     width: 80%;
     opacity: 0.7;
-    position: absolute;
-    top: 255px;
-    display: none;
+    position: absolute; // Position the button absolutely within the mentor-card-container
+    bottom: 50px; // Distance from the bottom of the mentor-card-container
+    left: 50%; // Horizontally center the button
+    transform: translateX(-50%); // Adjust for the width of the button to ensure true centering
+    display: flex;
+    justify-content: center; // Center the content of the button horizontally
+    align-items: center; // Center the content of the button vertically
   }
 
   &:hover {
